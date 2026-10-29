@@ -100,35 +100,34 @@ namespace Assignment
         public string ASN01_ReverseString(string str)
         {
             Stack<char> stack = new Stack<char>();
-            int c = stack.Count;
-            string result = "";
+            string reversed = "";
 
-            for (int i = 0; i < str.Length; i++)
+            foreach (char c in str)
             {
-                stack.Push(str[i]);
+                stack.Push(c);
             }
 
-            for (int i = 0; i < c; i++)
+            while (stack.Count > 0)
             {
-                result += stack.Pop();
+                reversed += stack.Pop();
             }
 
-            return result;
+            return reversed;
 
         }
 
         public bool ASN02_StackPalindrome(string str)
         {
             Stack<char> stack = new Stack<char>();
-            int c = stack.Count;
             string reversed = "";
 
-            for (int i = 0; i < str.Length; i++)
+            foreach (char c in str)
             {
-                stack.Push(str[i]);
+                stack.Push(c);
             }
 
-            for (int i = 0; i < c; i++)
+
+            while (stack.Count > 0)
             {
                 reversed += stack.Pop();
             }
