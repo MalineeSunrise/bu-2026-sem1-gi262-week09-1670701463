@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace Assignment
@@ -98,12 +99,41 @@ namespace Assignment
 
         public string ASN01_ReverseString(string str)
         {
-            throw new NotImplementedException();
+            Stack<char> stack = new Stack<char>();
+            int c = stack.Count;
+            string result = "";
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                stack.Push(str[i]);
+            }
+
+            for (int i = 0; i < c; i++)
+            {
+                result += stack.Pop();
+            }
+
+            return result;
+
         }
 
         public bool ASN02_StackPalindrome(string str)
         {
-            throw new NotImplementedException();
+            Stack<char> stack = new Stack<char>();
+            int c = stack.Count;
+            string reversed = "";
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                stack.Push(str[i]);
+            }
+
+            for (int i = 0; i < c; i++)
+            {
+                reversed += stack.Pop();
+            }
+
+            return str == reversed;
         }
 
         #endregion
@@ -112,7 +142,35 @@ namespace Assignment
 
         public bool EX01_ParenthesesChecker(string str)
         {
-            throw new NotImplementedException();
+            Stack<char> stack = new Stack<char>();
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                char ch = str[i];
+
+                if (ch == '(' || ch == '[' || ch == '{')
+                {
+                    stack.Push(ch);
+                }
+                else if (ch == ')' || ch == ']' || ch == '}')
+                {
+                    if (stack.Count == 0)
+                    {
+                        return false;
+                    }
+
+                    char open = stack.Pop();
+
+                    if ((ch == ')' && open != '(') ||
+                        (ch == ']' && open != '[') ||
+                        (ch == '}' && open != '{'))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return stack.Count == 0;
         }
 
         #endregion
